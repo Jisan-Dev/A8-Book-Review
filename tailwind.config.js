@@ -7,6 +7,9 @@ export default {
         workSans: ['"Work Sans"', 'sans-serif'],
         playFair: ['"Playfair Display"', 'serif'],
       },
+      colors: {
+        primary: '#23BE0A',
+      },
     },
   },
   plugins: [require('daisyui')],
