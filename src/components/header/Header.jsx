@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className="container mx-auto font-workSans">
+    <header className="container mx-auto font-workSans md:mt-6">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">

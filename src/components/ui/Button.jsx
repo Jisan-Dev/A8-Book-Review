@@ -6,7 +6,7 @@ const Button = ({ text, bg, textSize, px, py }) => {
       <button
         className={`cursor-pointer rounded-lg ${bg ? bg : 'bg-primary'} text-white ${textSize ? textSize : 'text-[18px]'} font-semibold ${px ? px : 'px-7'} ${
           py ? py : 'py-[18px]'
-        }`}>
+        } font-workSans `}>
         {text}
       </button>
     </>
