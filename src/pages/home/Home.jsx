@@ -1,7 +1,11 @@
 import Button from '../../components/ui/Button';
 import bannerImage from '../../assets/images/bannerBook.png';
+import { useLoaderData } from 'react-router-dom';
+import HomeBookCard from '../../components/home-book-card/HomeBookCard';
 
 const Home = () => {
+  const books = useLoaderData();
+  console.log(books);
   return (
     <>
       {/* BANNER */}
@@ -12,6 +16,15 @@ const Home = () => {
         </div>
         <div>
           <img src={bannerImage} alt="" />
+        </div>
+      </section>
+
+      <section className="mt-28 container mx-auto">
+        <h2 className="text-neutral-900 text-[40px] font-bold text-center font-playFair mb-9">Books</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {books.map((book) => (
+            <HomeBookCard key={book.bookId} book={book} />
+          ))}
         </div>
       </section>
     </>
