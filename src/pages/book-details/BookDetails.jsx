@@ -1,12 +1,25 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Button from '../../components/ui/Button';
+import { getStoredReadBooks, storeReadBooks } from '../../utils/localstorage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BookDetails = () => {
   const { bookId } = useParams();
   const books = useLoaderData();
   const book = books.find((book) => book.bookId === Number(bookId));
-  console.log(book);
+
+  const readBtnHandler = () => {
+    const storedReadBooks = getStoredReadBooks();
+    if (storedReadBooks.includes(Number(bookId))) {
+      toast.error('You have already read this book');
+    } else {
+      storeReadBooks(Number(bookId));
+      toast.success('Book added to read list');
+    }
+  };
+
   return (
     <div className="flex gap-12 container mx-auto mb-9">
       <div className="bg-neutral-900 bg-opacity-5 rounded-2xl flex items-center justify-center w-1/2">
@@ -42,9 +55,17 @@ const BookDetails = () => {
           </p>
         </div>
         <div className="space-x-2">
-          <Button bg="bg-transparent" border="border border-neutral-900 border-opacity-30" text="Read" textStyle="text-neutral-900 font-semibold" textSize="text-lg" />
+          <Button
+            clickHandler={readBtnHandler}
+            bg="bg-transparent"
+            border="border border-neutral-900 border-opacity-30"
+            text="Read"
+            textStyle="text-neutral-900 font-semibold"
+            textSize="text-lg"
+          />
           <Button bg="bg-[#50B1C9]" text="Wishlist" textStyle="text-white font-semibold" textSize="text-lg" />
         </div>
+        <ToastContainer />
       </div>
     </div>
   );
