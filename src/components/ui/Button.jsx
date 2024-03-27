@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-const Button = ({ text, bg, textSize, px, py }) => {
+const Button = ({ text, bg, textSize, textStyle, px, py, border }) => {
   return (
     <>
       <button
-        className={`cursor-pointer rounded-lg ${bg ? bg : 'bg-primary'} text-white ${textSize ? textSize : 'text-[18px]'} font-semibold ${px ? px : 'px-7'} ${
-          py ? py : 'py-[18px]'
-        } font-workSans `}>
+        className={`cursor-pointer rounded-lg ${bg ? bg : 'bg-primary'} ${textSize ? textSize : 'text-[18px]'} ${px ? px : 'px-7'} ${py ? py : 'py-[18px]'} font-workSans ${
+          border && border
+        } ${textStyle ? textStyle : 'text-white font-semibold'} `}>
         {text}
       </button>
     </>
@@ -19,6 +19,8 @@ Button.propTypes = {
   textSize: PropTypes.string,
   px: PropTypes.string,
   py: PropTypes.string,
+  border: PropTypes.string,
+  textStyle: PropTypes.string,
 };
 
 export default Button;
