@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Button from '../../components/ui/Button';
-import { getStoredReadBooks, storeReadBooks } from '../../utils/localstorage';
+import { getStoredReadBooks, getStoredWishedBooks, storeReadBooks, storeWishedBooks } from '../../utils/localstorage';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,6 +17,19 @@ const BookDetails = () => {
     } else {
       storeReadBooks(Number(bookId));
       toast.success('Book added to read list');
+    }
+  };
+
+  const wishBtnHandler = () => {
+    const storedReadBooks = getStoredReadBooks();
+    const storedWishedBooks = getStoredWishedBooks();
+    if (storedWishedBooks.includes(Number(bookId))) {
+      toast.error('Book is already in the wishlist');
+    } else if (storedReadBooks.includes(Number(bookId))) {
+      toast.error('You have already read this book');
+    } else {
+      storeWishedBooks(Number(bookId));
+      toast.success('Book added to wishlist');
     }
   };
 
@@ -63,7 +76,7 @@ const BookDetails = () => {
             textStyle="text-neutral-900 font-semibold"
             textSize="text-lg"
           />
-          <Button bg="bg-[#50B1C9]" text="Wishlist" textStyle="text-white font-semibold" textSize="text-lg" />
+          <Button clickHandler={wishBtnHandler} bg="bg-[#50B1C9]" text="Wishlist" textStyle="text-white font-semibold" textSize="text-lg" />
         </div>
         <ToastContainer />
       </div>
