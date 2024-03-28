@@ -25,7 +25,7 @@ export default function App() {
   const data = dataLoaded.filter((data) => dataIds.includes(data.bookId));
   return (
     <div className="bg-base-200 container mx-auto h-[80vh] rounded-2xl overflow-x-auto relative">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-sm:w-[500px]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-sm:w-[400px]">
         <BarChart
           width={1000}
           height={460}
