@@ -75,8 +75,9 @@ const BookDetails = () => {
             text="Read"
             textStyle="text-neutral-900 font-semibold"
             textSize="text-lg"
+            hover="hover:bg-primary hover:text-white"
           />
-          <Button clickHandler={wishBtnHandler} bg="bg-[#50B1C9]" text="Wishlist" textStyle="text-white font-semibold" textSize="text-lg" />
+          <Button clickHandler={wishBtnHandler} bg="bg-[#50B1C9]" text="Wishlist" textStyle="text-white font-semibold" textSize="text-lg" hover="hover:bg-[#0b647a]" />
         </div>
         <ToastContainer />
       </div>
